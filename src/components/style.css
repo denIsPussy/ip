@@ -1,0 +1,197 @@
+@font-face {
+	font-family: 'iviSans bold'; 
+	src: url(fonts/iviSans/iviSans-Bold.otf); 
+}
+@font-face {
+	font-family: 'iviSans Medium'; 
+	src: url(fonts/iviSans/iviSans-Medium.otf); 
+}
+@font-face {
+	font-family: 'iviSans Regular'; 
+	src: url(fonts/iviSans/iviSans-Regular.otf); 
+}
+label.error {
+    color: red;
+}
+input.error {
+    border: 1px dashed red;
+    color: red;
+}
+.bg-rose {
+    --bs-bg-opacity: 1;
+    background-color: rgb(225, 30, 157) !important;
+}
+.bg-red {
+    --bs-bg-opacity: 1;
+    background-color: rgb(225, 30, 30) !important;
+}
+a.nav-link{
+    color: rgb(146, 138, 138) !important;
+    font-size: 20px;
+    font-family: 'iviSans Medium';
+}
+.custom-toggler .navbar-toggler-icon {
+	background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+    border-color: rgb(255, 255, 255);
+} 
+.navbar-brand.bg-red{
+    justify-content: flex-start;
+    width: 120px;
+}
+#collapsibleNavId{
+    /* padding-right: 10%;
+    margin-right: 7%; */
+    justify-content: center;
+}
+.container.text-truncate.p-0{
+    width: 100%;
+    font-size: 1.6em;
+}
+@media(max-width: 2000px){
+    li.nav-item{
+        text-align: center;
+        margin-left: 0%;
+    }
+    #collapsibleNavId{
+        padding-right: 0%;
+    }
+    .size-text-title{
+        font-size: 30px;
+    }
+    .container.text-truncate.p-0{
+        width: 100%;
+        font-size: 1.4em;
+    }
+    .page-name-text-width{
+        font-size: 33px;
+    }
+    .category-text-width{
+        font-size: 26px;
+    }
+    .description-text-width{
+        font-size: 15px;
+    }
+    div#name-page{
+        font-size: 30px;
+    }
+}
+@media(max-width: 992px){
+    li.nav-item{
+        text-align: center;
+        margin-left: 0%;
+    }
+    #collapsibleNavId{
+        padding-right: 0%;
+    }
+    .size-text-title{
+        font-size: 25px;
+    }
+    .container.text-truncate.p-0{
+        width: 100%;
+        font-size:1.2em;
+    }
+    .page-name-text-width{
+        font-size: 28px;
+    }
+    .category-text-width{
+        font-size: 23px;
+    }
+    .description-text-width{
+        font-size: 13px;
+    }
+    div#name-page{
+        font-size: 25px;
+    }
+}
+@media(max-width: 768px){
+    li.nav-item{
+        text-align: center;
+        margin-left: 0%;
+    }
+    #collapsibleNavId{
+        padding-right: 0%;
+    }
+    .size-text-title{
+        font-size: 20px;
+    }
+    .size-image{
+        width: 200px;
+    }
+    .container.text-truncate.p-0{
+        width: 100%;
+        font-size:1em;
+    }
+    .page-name-text-width{
+        font-size: 23px;
+    }
+    .category-text-width{
+        font-size: 17px;
+    }
+    .description-text-width{
+        font-size: 10px;
+    }
+    div#name-page{
+        font-size: 20px;
+    }
+}
+@media(max-width: 576px){
+    li.nav-item{
+        text-align: center;
+        margin-left: 0%;
+    }
+    #collapsibleNavId{
+        padding-right: 0%;
+    }
+    .size-text-title{
+        font-size: 20px;
+    }
+    .size-image{
+        width: 100px;
+    }
+    .container.text-truncate.p-0{
+        width: 100%;
+        font-size: 0.8em;
+    }
+    .page-name-text-width{
+        font-size: 17px;
+    }
+    .category-text-width{
+        font-size: 13px;
+    }
+    .description-text-width{
+        font-size: 10px;
+    }
+    div#name-page{
+        font-size: 15px;
+    }
+}
+body{
+    overflow-x: hidden;
+}
+#banner {
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #banner img {
+    border-radius: 5px;
+  }
+  
+  #banner img.show {
+    width: 95%;
+    opacity: 1;
+    transition: opacity 1s, visibility 0s;
+  }
+  
+  #banner img.hide {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility 0s 1s;
+  }
