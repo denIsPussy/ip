@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Catalog from "./Catalog";
-import Year from "../../models/Year";
+import Rating from "../../models/Rating";
 import "../style.css";
 import Movie from "../DTO/MovieDTO";
 import DataService from "../../services/DataService";
@@ -10,17 +10,18 @@ export default function Films(props) {
 
     const [data, setData] = useState(new Movie());
     const [year, setYear] = useState([]);
+    const ratings = {
+        1: "R",
+        2: "G",
+        3: "PG",
+      };
+
 
     const getAllUrl = 'film?_expand=filmName';
     const filmUrl = "film/"
     const yearUrl = "year/"
     const transformer = (data) => new Movie(data);
 
-    useEffect(() => {
-        DataService.readAll(yearUrl, (data) => new Year(data)).then((data) =>
-          setYear(data)
-        );
-      }, []);
 
     function handleOnAdd() {
         setData(new Movie());
@@ -90,9 +91,9 @@ export default function Films(props) {
                     <select id="rating" className="form-select" value={data.rating} onChange={handleFormChange}>
                         <option disabled value="">  Выберите год </option>
                         {
-                            year.map(year => 
-                                <option key={year.id} value={year.name}>
-                                    {year.name}
+                            Object.keys(ratings).map((key, index) => 
+                                <option key={key} value={Object.values(ratings)[index]}>
+                                    {Object.values(ratings)[index]}
                                 </option>
                             )
                         }

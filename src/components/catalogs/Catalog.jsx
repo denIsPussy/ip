@@ -12,25 +12,11 @@ export default function Catalog(props) {
     const [isEdit, setEdit] = useState(false);
 
     useEffect(() => {
-        load();
+        loadItems();
     }, []);
 
-    function loadItems() {
-        load().then(data => setItems(data));
-    }
 
-    function deleteItem(id) {
-        del(id).then(() => loadItems());
-    }
-
-    function saveItem() {
-        if (!isEdit) {
-            save(isEdit).then(() => loadItems());
-        } else {
-            DataService.update(props.url + props.data.id, props.data).then(() => loadItems());
-        }
-    }
-
+    
     function handleAdd() {
         setEdit(false);
         setModalHeader('Добавление элемента');
@@ -39,12 +25,32 @@ export default function Catalog(props) {
         props.onAdd();
     }
 
-    function handleEdit(id) {
-        edit(id);
+    function handleEdit(id, name, rating, movieTracking, image) {
+        edit(id, name, rating, movieTracking, image);
     }
 
-    function edit(editedId) {
-        DataService.read(props.url + editedId, props.transformer)
+    function handleRemove(id) {
+        deleteItem(id);
+    }
+
+    function loadItems() {
+        load();
+    }
+
+    function deleteItem(id) {
+        del(id).then(() => loadItems());
+    }
+
+    function saveItem() {
+        save(isEdit).then(() => loadItems());
+    }
+
+    function updateItem() {
+        save(isEdit).then(() => loadItems());
+    }
+
+    function edit(id) {
+        get(id)
             .then(data => {
                 setEdit(true);
                 setModalHeader('Редактирование элемента');
@@ -54,9 +60,7 @@ export default function Catalog(props) {
             });
     }
 
-    function handleRemove(id) {
-        deleteItem(id);
-    }
+
 
     function handleModalHide() {
         setModalVisible(false);
@@ -92,8 +96,6 @@ export default function Catalog(props) {
         const requestUrl = "http://localhost:8080" +
             `/movie/${id}`;
         const response = await fetch(requestUrl, requestParams);
-        const movie = await response.json();
-        setItems(movie);
     }
 
     const load = async function () {
@@ -102,6 +104,25 @@ export default function Catalog(props) {
         const response = await fetch(requestUrl);
         const movies = await response.json();
         setItems(movies);
+    }
+
+    const get = async function (id) {
+        console.log(props.data)
+        const requestUrl = "http://localhost:8080" + `/movie/${id}`;
+        const response = await fetch(requestUrl);
+        const movie = await response.json();
+        return movie;
+    }
+
+    const update = async function (id, name, rating, movieTracking, image) {
+        const requestParams = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        };
+        const requestUrl = host + `/cart/${id}?name=${name}&rating=${rating}&movieTracking=${movieTracking}&image=${image}`;
+        const response = await fetch(requestUrl, requestParams);
     }
 
     return (
